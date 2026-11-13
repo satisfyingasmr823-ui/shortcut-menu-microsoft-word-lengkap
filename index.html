@@ -1,313 +1,458 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kang Ruli | Jasa SEO, Website, dan Bahan Ajar Interaktif</title>
+<meta name="description" content="Jasa strategi SEO konten, pengembangan website, dan bahan ajar interaktif untuk sekolah. Hasil terukur, bahasa jelas, pengerjaan rapi.">
 <style>
-  .mw { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #1e293b; line-height: 1.75; font-size: 17px; max-width: 860px; margin: 0 auto; }
-  .mw p { margin: 0 0 16px; }
-  .mw h2 { font-size: 1.6rem; line-height: 1.3; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #fed7aa; color: #0f172a; }
-  .mw h3 { font-size: 1.2rem; margin: 26px 0 10px; color: #c2410c; }
-  .mw a { color: #0d9488; text-decoration: none; border-bottom: 1px dashed #5eead4; }
-  .mw a:hover { color: #0f766e; border-bottom-style: solid; }
-  .mw .lead { font-size: 1.12rem; color: #334155; background: #fff7ed; border-left: 4px solid #f97316; padding: 16px 20px; border-radius: 12px; }
-  .mw .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 20px 0; }
-  .mw .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px 18px; box-shadow: 0 4px 14px rgba(15,23,42,.05); }
-  .mw .card strong { display: block; color: #0f766e; font-size: 1rem; margin-bottom: 4px; }
-  .mw kbd { display: inline-block; background: #f1f5f9; border: 1px solid #cbd5e1; border-bottom-width: 3px; border-radius: 6px; padding: 1px 7px; font-family: ui-monospace, Consolas, monospace; font-size: .88em; color: #0f172a; }
-  .mw .table-wrap { overflow-x: auto; margin: 18px 0; border-radius: 14px; border: 1px solid #e2e8f0; }
-  .mw table { width: 100%; border-collapse: collapse; background: #fff; min-width: 480px; }
-  .mw th, .mw td { padding: 12px 14px; text-align: left; border-bottom: 1px solid #e2e8f0; font-size: .95rem; }
-  .mw th { background: #f0fdfa; color: #0f766e; font-weight: 700; }
-  .mw tr:last-child td { border-bottom: 0; }
-  .mw ul, .mw ol { padding-left: 22px; margin: 0 0 18px; }
-  .mw li { margin-bottom: 6px; }
-  .mw .tip { background: #f0fdfa; border: 1px solid #99f6e4; border-radius: 14px; padding: 16px 18px; margin: 20px 0; }
-  .mw .tip strong { color: #0f766e; }
-  .mw details { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; margin: 10px 0; }
-  .mw summary { cursor: pointer; font-weight: 600; color: #0f172a; }
-  .mw details p { margin: 10px 0 0; }
+  :root {
+    --primary: #0d9488;
+    --primary-dark: #0f766e;
+    --accent: #f97316;
+    --accent-dark: #ea580c;
+    --ink: #0f172a;
+    --muted: #64748b;
+    --line: #e2e8f0;
+    --bg: #f8fafc;
+    --white: #ffffff;
+    --radius: 18px;
+    --shadow: 0 1px 2px rgba(15,23,42,.05), 0 12px 32px rgba(15,23,42,.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Inter", sans-serif;
+    color: var(--ink); background: var(--bg); line-height: 1.65; font-size: 16px;
+  }
+  img, svg { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  .container { width: min(1120px, 92%); margin: 0 auto; }
+  section { padding: 84px 0; }
+  .eyebrow {
+    display: inline-block; font-size: .8rem; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--primary-dark); background: #ccfbf1;
+    padding: 6px 12px; border-radius: 999px; margin-bottom: 14px;
+  }
+  h1, h2, h3 { line-height: 1.2; letter-spacing: -.01em; }
+  h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); margin-bottom: 14px; }
+  .lead { color: var(--muted); font-size: 1.08rem; max-width: 640px; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 26px; border-radius: 999px; font-weight: 700; border: 2px solid transparent;
+    transition: transform .2s, box-shadow .2s, background .2s; cursor: pointer; font: inherit;
+  }
+  .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 8px 20px rgba(249,115,22,.3); }
+  .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
+  .btn-outline { border-color: rgba(255,255,255,.7); color: #fff; }
+  .btn-outline:hover { background: rgba(255,255,255,.12); }
+  .btn-dark { background: var(--ink); color: #fff; }
+  .btn-dark:hover { background: #1e293b; transform: translateY(-2px); }
+
+  /* Header */
+  header.site {
+    position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.85);
+    backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .brand { font-weight: 800; font-size: 1.15rem; display: flex; align-items: center; gap: 10px; }
+  .brand span.dot { width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, var(--primary), #14b8a6); display: grid; place-items: center; color: #fff; font-size: .95rem; }
+  .menu { display: flex; gap: 26px; font-weight: 600; font-size: .95rem; color: var(--muted); }
+  .menu a:hover { color: var(--ink); }
+  .nav .btn { padding: 10px 18px; font-size: .92rem; }
+
+  /* Hero */
+  .hero {
+    position: relative; overflow: hidden; color: #fff;
+    background: linear-gradient(135deg, #0d9488 0%, #0f766e 55%, #115e59 100%);
+    padding: 96px 0 110px;
+  }
+  .hero::before {
+    content: ""; position: absolute; right: -120px; top: -120px; width: 420px; height: 420px;
+    border-radius: 50%; background: rgba(249,115,22,.28);
+  }
+  .hero::after {
+    content: ""; position: absolute; left: -80px; bottom: -140px; width: 320px; height: 320px;
+    border-radius: 50%; background: rgba(255,255,255,.08);
+  }
+  .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; }
+  .hero .eyebrow { background: rgba(255,255,255,.16); color: #fff; }
+  .hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800; margin-bottom: 18px; }
+  .hero p.sub { font-size: 1.12rem; opacity: .92; max-width: 560px; margin-bottom: 30px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-card {
+    background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22);
+    border-radius: var(--radius); padding: 26px; backdrop-filter: blur(6px);
+  }
+  .hero-card ul { list-style: none; display: grid; gap: 14px; }
+  .hero-card li { display: flex; gap: 12px; align-items: flex-start; font-size: .98rem; }
+  .hero-card li b { display: block; }
+  .check { flex-shrink: 0; width: 26px; height: 26px; border-radius: 8px; background: #fff; color: var(--primary-dark); display: grid; place-items: center; font-weight: 800; font-size: .85rem; }
+
+  /* Stats */
+  .stats { margin-top: -54px; position: relative; z-index: 2; }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 26px;
+  }
+  .stat { text-align: center; padding: 6px; }
+  .stat strong { display: block; font-size: 1.9rem; color: var(--primary-dark); font-weight: 800; }
+  .stat span { color: var(--muted); font-size: .9rem; }
+
+  /* Services */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 42px; }
+  .card {
+    background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 28px; box-shadow: var(--shadow); transition: transform .25s, border-color .25s;
+  }
+  .card:hover { transform: translateY(-4px); border-color: #99f6e4; }
+  .icon {
+    width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center;
+    background: #ccfbf1; color: var(--primary-dark); font-size: 1.4rem; margin-bottom: 18px;
+  }
+  .card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+  .card p { color: var(--muted); font-size: .97rem; }
+  .card ul { margin-top: 14px; padding-left: 18px; color: var(--muted); font-size: .94rem; }
+  .card ul li { margin-bottom: 4px; }
+
+  /* Process */
+  .process { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 42px; counter-reset: step; }
+  .step { position: relative; padding: 24px; border-radius: var(--radius); background: var(--bg); border: 1px solid var(--line); }
+  .step::before {
+    counter-increment: step; content: counter(step);
+    width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: #fff;
+    display: grid; place-items: center; font-weight: 800; margin-bottom: 14px;
+  }
+  .step h3 { font-size: 1.05rem; margin-bottom: 6px; }
+  .step p { color: var(--muted); font-size: .92rem; }
+
+  /* Portfolio */
+  .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 42px; }
+  .project {
+    border-radius: var(--radius); overflow: hidden; background: var(--white);
+    border: 1px solid var(--line); box-shadow: var(--shadow);
+  }
+  .project-thumb { height: 170px; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 1.3rem; }
+  .p1 { background: linear-gradient(135deg, #0d9488, #14b8a6); }
+  .p2 { background: linear-gradient(135deg, #f97316, #fb923c); }
+  .p3 { background: linear-gradient(135deg, #334155, #0f172a); }
+  .project-body { padding: 22px; }
+  .project-body h3 { font-size: 1.08rem; margin-bottom: 6px; }
+  .project-body p { color: var(--muted); font-size: .93rem; }
+  .tag { display: inline-block; margin-top: 12px; font-size: .78rem; font-weight: 700; color: var(--primary-dark); background: #f0fdfa; padding: 4px 10px; border-radius: 999px; }
+
+  /* Pricing */
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 42px; align-items: stretch; }
+  .price {
+    background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 32px 28px; display: flex; flex-direction: column; box-shadow: var(--shadow);
+  }
+  .price.featured { border: 2px solid var(--primary); transform: translateY(-8px); }
+  .price .badge { align-self: flex-start; font-size: .75rem; font-weight: 700; background: var(--accent); color: #fff; padding: 4px 12px; border-radius: 999px; margin-bottom: 12px; }
+  .price h3 { font-size: 1.2rem; }
+  .price .amount { font-size: 1.9rem; font-weight: 800; margin: 12px 0 4px; }
+  .price .note { color: var(--muted); font-size: .9rem; margin-bottom: 18px; }
+  .price ul { list-style: none; display: grid; gap: 10px; margin-bottom: 26px; font-size: .95rem; }
+  .price li::before { content: "✓ "; color: var(--primary-dark); font-weight: 800; }
+  .price .btn { margin-top: auto; }
+
+  /* FAQ */
+  .faq { max-width: 780px; margin: 42px auto 0; display: grid; gap: 12px; }
+  details { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 18px 22px; }
+  summary { cursor: pointer; font-weight: 700; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+  summary::after { content: "+"; color: var(--primary-dark); font-size: 1.3rem; line-height: 1; }
+  details[open] summary::after { content: "–"; }
+  details p { margin-top: 10px; color: var(--muted); font-size: .96rem; }
+
+  /* CTA */
+  .cta {
+    background: linear-gradient(135deg, #0f766e, #0d9488); color: #fff; text-align: center;
+    border-radius: 24px; padding: 56px 28px; box-shadow: var(--shadow);
+  }
+  .cta h2 { color: #fff; }
+  .cta p { opacity: .92; max-width: 560px; margin: 0 auto 26px; }
+
+  /* Footer */
+  footer { padding: 36px 0; color: var(--muted); font-size: .92rem; border-top: 1px solid var(--line); background: var(--white); }
+  .foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  footer a:hover { color: var(--ink); }
+
+  /* Responsive */
+  @media (max-width: 960px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .services-grid, .portfolio-grid, .pricing-grid { grid-template-columns: 1fr 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .price.featured { transform: none; }
+    .menu { display: none; }
+  }
   @media (max-width: 640px) {
-    .mw { font-size: 16px; line-height: 1.7; }
-    .mw h2 { font-size: 1.35rem; margin-top: 32px; }
-    .mw h3 { font-size: 1.1rem; }
-    .mw .lead { padding: 14px 16px; }
-    .mw .cards { grid-template-columns: 1fr; }
+    section { padding: 64px 0; }
+    .hero { padding: 64px 0 80px; }
+    .services-grid, .portfolio-grid, .pricing-grid, .steps { grid-template-columns: 1fr; }
+    .stats { margin-top: -40px; }
+    .nav .btn { display: none; }
+    .btn { width: 100%; }
+    .hero-actions .btn { width: 100%; }
+    .cta { padding: 40px 22px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
   }
 </style>
+</head>
+<body>
 
-<div class="mw">
+<header class="site">
+  <div class="container nav">
+    <a href="#" class="brand"><span class="dot">KR</span> Kang Ruli</a>
+    <nav class="menu" aria-label="Navigasi utama">
+      <a href="#layanan">Layanan</a>
+      <a href="#proses">Proses</a>
+      <a href="#portofolio">Portofolio</a>
+      <a href="#harga">Paket</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="#kontak" class="btn btn-primary">Konsultasi Gratis</a>
+  </div>
+</header>
 
-<p class="lead">Hampir setiap orang pernah membuka <a href="https://www.kangruli.web.id/">Microsoft Word</a> untuk menulis tugas, laporan, surat, atau dokumen kerja. Namun, tidak banyak yang tahu bahwa sebagian besar pekerjaan bisa diselesaikan jauh lebih cepat dengan kombinasi tombol keyboard dan menu yang tepat. Artikel ini merangkum <a href="https://www.kangruli.web.id/">shortcut keyboard untuk meng-copy teks pada Microsoft Word</a>, cara membatalkan perintah, membuat teks tebal, hingga mengatur margin dan jenis kertas, dilengkapi latihan soal dan tips agar semuanya mudah diingat.</p>
+<main>
 
-<p>Artikel ini ditulis untuk pemula, siswa, mahasiswa, dan siapa pun yang ingin bekerja lebih efisien di depan komputer. Setiap bagian dibuat ringkas, dengan contoh yang bisa langsung Anda coba di dokumen sendiri. Anda tidak perlu menghafal semuanya sekaligus. Cukup pilih beberapa yang paling sering dipakai, lalu tambahkan sedikit demi sedikit.</p>
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Jasa SEO, Website, dan Edukasi Digital</span>
+      <h1>Website yang Dibaca Pengunjung dan Ditemukan Google</h1>
+      <p class="sub">Saya membantu blog, bisnis kecil, dan sekolah membangun konten yang rapi, mudah ditemukan, dan siap menghasilkan. Mulai dari strategi SEO, pengembangan website, hingga bahan ajar interaktif.</p>
+      <div class="hero-actions">
+        <a href="#kontak" class="btn btn-primary">Mulai Konsultasi</a>
+        <a href="#portofolio" class="btn btn-outline">Lihat Portofolio</a>
+      </div>
+    </div>
+    <aside class="hero-card" aria-label="Keunggulan">
+      <ul>
+        <li><span class="check">✓</span><div><b>Strategi berbasis data</b>Keputusan diambil dari Search Console, bukan tebakan.</div></li>
+        <li><span class="check">✓</span><div><b>Bahasa yang jelas</b>Tulisan mudah dipahami pembaca dan ramah mesin pencari.</div></li>
+        <li><span class="check">✓</span><div><b>Pengerjaan transparan</b>Setiap tahap bisa Anda pantau dan revisi.</div></li>
+        <li><span class="check">✓</span><div><b>Dukungan setelah selesai</b>Ada panduan singkat agar Anda bisa melanjutkan sendiri.</div></li>
+      </ul>
+    </aside>
+  </div>
+</section>
 
-<h2>Mengapa Shortcut Keyboard Penting di Microsoft Word</h2>
-<p>Setiap kali Anda memindahkan tangan dari keyboard ke mouse untuk mengklik menu, waktu kecil itu terbuang. Jika dikalikan puluhan kali dalam sehari, selisihnya terasa. Shortcut membuat tangan tetap berada di posisi mengetik, sehingga ritme kerja tidak terputus.</p>
-<p>Selain menghemat waktu, shortcut juga mengurangi kelelahan. Gerakan berulang pada mouse, terutama saat memilih teks dan membuka menu, bisa membuat pergelangan tangan lebih cepat pegal. Dengan tombol pintas, gerakan itu berkurang.</p>
-<p>Shortcut yang baik juga konsisten. Banyak perintah di Word, seperti menebalkan teks atau menyalin, juga bisa dipakai di aplikasi lain seperti peramban dan pengolah angka. Sekali dikuasai, kemampuan ini ikut terbawa ke banyak pekerjaan lain.</p>
-
-<h2>Shortcut Dasar: Copy, Paste, Cut, dan Undo</h2>
-<p>Empat perintah ini adalah fondasi. Hampir setiap pengguna komputer memakainya setiap hari, dan karena itu sebaiknya dihafal terlebih dahulu.</p>
-
-<div class="cards">
-  <div class="card"><strong>Copy</strong>Salin teks atau objek dengan <kbd>Ctrl</kbd> + <kbd>C</kbd></div>
-  <div class="card"><strong>Paste</strong>Tempel hasil salinan dengan <kbd>Ctrl</kbd> + <kbd>V</kbd></div>
-  <div class="card"><strong>Cut</strong>Potong teks dengan <kbd>Ctrl</kbd> + <kbd>X</kbd></div>
-  <div class="card"><strong>Undo</strong>Batalkan perintah terakhir dengan <kbd>Ctrl</kbd> + <kbd>Z</kbd></div>
+<div class="container stats">
+  <div class="stats-grid">
+    <div class="stat"><strong>50+</strong><span>Artikel dan panduan dipublikasikan</span></div>
+    <div class="stat"><strong>3</strong><span>Bidang keahlian utama</span></div>
+    <div class="stat"><strong>100%</strong><span>Konten ditulis orisinal</span></div>
+    <div class="stat"><strong>24 jam</strong><span>Respons awal konsultasi</span></div>
+  </div>
 </div>
 
-<p>Shortcut untuk <a href="https://www.kangruli.web.id/">shortcut keyboard untuk memotong teks pada Microsoft Word</a> adalah <kbd>Ctrl</kbd> + <kbd>X</kbd>. Berbeda dengan copy, perintah cut menghapus teks dari posisi awal dan menyimpannya di papan klip, sehingga Anda bisa menempelkannya di tempat lain.</p>
-
-<p>Untuk <a href="https://www.kangruli.web.id/">shortcut keyboard untuk membatalkan perintah yang telah dilakukan sebelumnya pada Microsoft Word</a>, gunakan <kbd>Ctrl</kbd> + <kbd>Z</kbd>. Jika Anda membatalkan terlalu banyak, tekan <kbd>Ctrl</kbd> + <kbd>Y</kbd> untuk mengulang perintah yang dibatalkan. Kombinasi ini sangat membantu saat Anda tidak yakin dengan hasil suntingan dan ingin kembali ke kondisi sebelumnya.</p>
-
-<div class="tip"><strong>Tips cepat:</strong> Saat menempel teks dari situs web, Word sering membawa format asalnya. Gunakan <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>V</kbd> lalu pilih "Teks Polos" agar dokumen tetap rapi.</div>
-
-<h2>Shortcut Format Teks: Tebal, Miring, dan Rata Paragraf</h2>
-<p>Format teks memberi hierarki pada dokumen. Judul dibuat lebih tebal, kutipan dibuat miring, dan paragraf diratakan agar enak dibaca. Semua itu bisa dilakukan dengan cepat jika Anda hafal kombinasi tombolnya.</p>
-
-<h3>Menebalkan dan Memiringkan Teks</h3>
-<p>Untuk <a href="https://www.kangruli.web.id/">membuat teks tebal pada Microsoft Word</a>, pilih teks lalu tekan <kbd>Ctrl</kbd> + <kbd>B</kbd>. Untuk membuat tulisan miring, gunakan <kbd>Ctrl</kbd> + <kbd>I</kbd>. Tombol <kbd>Ctrl</kbd> + <kbd>U</kbd> digunakan untuk garis bawah. Anda juga bisa menekan kombinasi tombol sebelum mulai mengetik. Teks yang muncul setelahnya akan langsung tebal atau miring, dan tombol yang sama akan mematikan format tersebut.</p>
-<p>Beberapa pengguna menanyakan <a href="https://www.kangruli.web.id/">perintah dari keyboard untuk melakukan cetak miring pada tulisan di Microsoft Word</a>. Jawabannya tetap <kbd>Ctrl</kbd> + <kbd>I</kbd>. Berbeda dengan cetak (print), perintah ini khusus mengubah gaya huruf menjadi miring.</p>
-
-<h3>Mengatur Perataan Paragraf</h3>
-<p>Perataan paragraf menentukan bagaimana teks menempel di tepi halaman. Berikut kombinasinya:</p>
-<ul>
-  <li><kbd>Ctrl</kbd> + <kbd>L</kbd> untuk rata kiri.</li>
-  <li><kbd>Ctrl</kbd> + <kbd>E</kbd> untuk rata tengah.</li>
-  <li><kbd>Ctrl</kbd> + <kbd>R</kbd> untuk rata kanan.</li>
-  <li><kbd>Ctrl</kbd> + <kbd>J</kbd> untuk rata kiri dan kanan (justify).</li>
-</ul>
-<p>Pertanyaan seperti <a href="https://www.kangruli.web.id/">bagaimana cara membuat teks rata tengah</a> sering muncul di kalangan pemula. Jawabannya cukup pilih paragraf, lalu tekan <kbd>Ctrl</kbd> + <kbd>E</kbd>. Untuk <a href="https://www.kangruli.web.id/">bagaimana cara membuat teks rata kiri kanan</a>, gunakan <kbd>Ctrl</kbd> + <kbd>J</kbd>, dan hasilnya akan membuat tepi kiri serta kanan teks sejajar.</p>
-
-<h3>Mengatur Jarak Antarbaris</h3>
-<p>Jarak antarbaris memengaruhi keterbacaan. Dokumen akademik biasanya memakai spasi 1,5 atau 2. Shortcut <kbd>Ctrl</kbd> + <kbd>1</kbd> membuat spasi tunggal, <kbd>Ctrl</kbd> + <kbd>2</kbd> membuat spasi ganda, dan <kbd>Ctrl</kbd> + <kbd>5</kbd> membuat spasi 1,5. Fitur ini termasuk dalam <a href="https://www.kangruli.web.id/">fitur Microsoft Word untuk mengatur jarak teks setiap baris</a>, dan bisa diubah juga lewat menu Paragraf.</p>
-
-<h3>Mengubah Ukuran Huruf dengan Cepat</h3>
-<p>Untuk memperbesar huruf, pilih teks lalu tekan <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>&gt;</kbd>. Untuk memperkecil, gunakan <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>&lt;</kbd>. Cara ini jauh lebih cepat dibanding membuka kotak ukuran font satu per satu.</p>
-
-<h2>Shortcut Dokumen dan File</h2>
-<p>Selain mengedit teks, Anda juga perlu mengelola dokumen: membuat yang baru, membuka yang lama, menyimpan, dan mencetak. Empat aktivitas ini sebaiknya ikut dikuasai.</p>
-
-<div class="table-wrap">
-<table>
-  <tr><th>Aktivitas</th><th>Shortcut</th></tr>
-  <tr><td>Membuka dokumen baru</td><td><kbd>Ctrl</kbd> + <kbd>N</kbd></td></tr>
-  <tr><td>Membuka dokumen yang sudah disimpan</td><td><kbd>Ctrl</kbd> + <kbd>O</kbd></td></tr>
-  <tr><td>Menyimpan dokumen</td><td><kbd>Ctrl</kbd> + <kbd>S</kbd></td></tr>
-  <tr><td>Mencetak dokumen</td><td><kbd>Ctrl</kbd> + <kbd>P</kbd></td></tr>
-  <tr><td>Memilih semua teks</td><td><kbd>Ctrl</kbd> + <kbd>A</kbd></td></tr>
-  <tr><td>Mencari kata</td><td><kbd>Ctrl</kbd> + <kbd>F</kbd></td></tr>
-  <tr><td>Mengganti kata</td><td><kbd>Ctrl</kbd> + <kbd>H</kbd></td></tr>
-</table>
-</div>
-
-<h3>Membuka Dokumen Baru</h3>
-<p>Untuk <a href="https://www.kangruli.web.id/">shortcut keyboard untuk membuka dokumen baru pada Microsoft Word</a>, tekan <kbd>Ctrl</kbd> + <kbd>N</kbd>. Word akan langsung menampilkan halaman kosong baru tanpa perlu membuka menu File terlebih dahulu. Jika Anda ingin memulai dari templat tertentu, gunakan menu File lalu pilih New.</p>
-
-<h3>Membuka File yang Sudah Disimpan</h3>
-<p>Pertanyaan <a href="https://www.kangruli.web.id/">bagaimana membuka file yang telah disimpan</a> juga sering diajukan. Tekan <kbd>Ctrl</kbd> + <kbd>O</kbd> untuk membuka jendela pilihan file. Anda juga bisa memilih file dari daftar Dokumen Terakhir yang muncul di layar awal Word.</p>
-
-<h3>Menyimpan dan Mencetak</h3>
-<p>Biasakan menekan <kbd>Ctrl</kbd> + <kbd>S</kbd> setiap selesai menulis satu bagian. Kebiasaan kecil ini bisa menyelamatkan pekerjaan Anda jika listrik mati atau aplikasi tiba-tiba tertutup. Untuk mencetak, gunakan <kbd>Ctrl</kbd> + <kbd>P</kbd>, lalu periksa pratinjau sebelum mengirim ke printer.</p>
-
-<p>Pertanyaan <a href="https://www.kangruli.web.id/">bagaimana cara mencetak file dengan keyboard</a> dijawab dengan tombol yang sama. Setelah jendela cetak terbuka, Anda bisa memilih printer, jumlah salinan, dan rentang halaman menggunakan keyboard saja dengan tombol <kbd>Tab</kbd> dan panah.</p>
-
-<h3>Mencari dan Mengganti Kata</h3>
-<p>Dokumen panjang sulit dibaca ulang satu per satu. Gunakan <kbd>Ctrl</kbd> + <kbd>F</kbd> untuk mencari kata, dan <kbd>Ctrl</kbd> + <kbd>H</kbd> untuk mengganti semua kemunculannya sekaligus. Misalnya, jika Anda salah menulis nama seseorang di 20 tempat, cukup satu kali penggantian.</p>
-
-<h2>Menu Penting di Microsoft Word</h2>
-<p>Tidak semua perintah punya shortcut. Untuk fitur tertentu, Anda perlu tahu menu yang tepat. Word mengelompokkan perintahnya dalam beberapa tab di bagian atas layar, yang disebut ribbon. Berikut tab yang paling sering dipakai.</p>
-
-<h3>Tab Beranda (Home)</h3>
-<p>Tab ini berisi hampir semua alat untuk format dasar. <a href="https://www.kangruli.web.id/">Menu yang digunakan untuk mengatur jenis huruf pada dokumen di Microsoft Word</a> ada di grup Font, tempat Anda memilih jenis huruf, ukuran, warna, dan efek tertentu. Di grup yang sama juga terdapat tombol tebal, miring, dan garis bawah.</p>
-<p>Grup Paragraf di tab yang sama mengatur perataan, daftar berpoin, dan <a href="https://www.kangruli.web.id/">menu yang digunakan untuk mengatur spasi antara baris pada dokumen di Microsoft Word</a>. Tombol Line and Paragraph Spacing ada di sini. Jika Anda ingin mengatur jarak lebih detail, buka kotak Paragraf dari panah kecil di sudut grup.</p>
-
-<h3>Tab Sisipkan (Insert)</h3>
-<p>Ketika Anda ingin menambah elemen baru ke dokumen, tab Sisipkan adalah tempatnya. <a href="https://www.kangruli.web.id/">Menu yang digunakan untuk menambahkan gambar pada dokumen di Microsoft Word</a> adalah Insert lalu Pictures. Pilih gambar dari komputer, atau gunakan opsi gambar daring jika tersedia. Setelah gambar masuk, Anda bisa menggesernya dan mengubah ukurannya dengan menarik sudut kotak seleksi.</p>
-<p>Untuk <a href="https://www.kangruli.web.id/">menu yang digunakan untuk memasukkan tabel pada dokumen di Microsoft Word</a>, pilih Insert lalu Table. Anda bisa menentukan jumlah baris dan kolom dari kotak kecil yang muncul, atau memilih Insert Table untuk memasukkan ukuran secara manual.</p>
-<p>Tab yang sama juga menyediakan hyperlink. Shortcut <a href="https://www.kangruli.web.id/">shortcut keyboard untuk menyisipkan hyperlink pada Microsoft Word</a> adalah <kbd>Ctrl</kbd> + <kbd>K</kbd>. Blok teks yang ingin dijadikan tautan, tekan kombinasi tersebut, lalu masukkan alamat tujuan.</p>
-
-<h3>Tab Tata Letak (Layout)</h3>
-<p>Tab ini mengatur struktur halaman. <a href="https://www.kangruli.web.id/">Menu yang digunakan untuk mengatur margin pada dokumen di Microsoft Word</a> adalah Layout lalu Margins. Anda bisa memilih margin normal, sempit, atau lebar, atau membuat ukuran sendiri melalui Custom Margins. Margin yang rapi membuat dokumen terlihat profesional, terutama untuk tugas atau surat resmi.</p>
-<p>Untuk <a href="https://www.kangruli.web.id/">menu yang digunakan untuk mengatur jenis dan ukuran kertas pada dokumen di Microsoft Word</a>, buka tab Layout lalu pilih Size. Di sini Anda bisa memilih A4, Letter, atau ukuran lain sesuai kebutuhan cetak. Pastikan ukuran kertas sama dengan kertas di printer sebelum mencetak dokumen penting.</p>
-
-<h3>Tab Tampilan (View)</h3>
-<p>Tab ini mengatur cara Anda melihat dokumen. <a href="https://www.kangruli.web.id/">Menu yang digunakan untuk mengatur tampilan halaman pada dokumen di Microsoft Word</a> ada di tab View. Mode Print Layout adalah tampilan paling mirip hasil cetak. Mode Read Mode cocok untuk membaca tanpa menyunting, sedangkan Web Layout berguna bila dokumen akan dipublikasikan di internet.</p>
-<p>Anda juga bisa mengatur zoom di tab ini. Jika ingin melihat dua halaman sekaligus, pilih opsi multi-halaman dari grup Zoom.</p>
-
-<div class="tip"><strong>Catatan:</strong> Nama tab bisa sedikit berbeda tergantung versi Word dan bahasa yang digunakan. Jika menu tidak sama persis, cari ikon yang serupa atau gunakan kolom pencarian di bagian atas jendela Word.</div>
-
-<h2>Shortcut Tambahan yang Sering Terlupakan</h2>
-<p>Selain perintah dasar, ada beberapa shortcut yang sangat membantu saat menulis dokumen panjang atau berformat khusus.</p>
-
-<h3>Membuat Garis Pemisah</h3>
-<p>Untuk <a href="https://www.kangruli.web.id/">shortcut garis di Word</a>, ketik tiga tanda hubung <kbd>---</kbd> lalu tekan <kbd>Enter</kbd>. Word akan otomatis membuat garis horizontal sepanjang halaman. Jika Anda mengetik tiga tanda garis bawah <kbd>___</kbd> lalu Enter, hasilnya berupa garis tebal. Cara ini sangat praktis untuk memisahkan bagian dokumen tanpa perlu membuka menu gambar bentuk.</p>
-
-<h3>Memberi Warna Latar pada Teks</h3>
-<p>Word belum memiliki shortcut bawaan untuk <a href="https://www.kangruli.web.id/">shortcut highlight word</a>, jadi fitur ini biasanya dipakai lewat menu. Blok teks, lalu buka tab Beranda dan pilih ikon Text Highlight Color. Pilih warna yang diinginkan. Untuk menghapusnya, pilih opsi No Color. Kebiasaan ini membantu menandai bagian penting saat meninjau ulang dokumen.</p>
-
-<h3>Mengubah Huruf Besar dan Kecil</h3>
-<p>Ada banyak situasi ketika Anda perlu mengubah huruf kapital, misalnya ketika mengetik judul. Shortcut <a href="https://www.kangruli.web.id/">shortcut capitalize each word</a> di Word adalah <kbd>Shift</kbd> + <kbd>F3</kbd>. Setiap kali ditekan, teks akan berganti antara huruf kapital di awal kalimat, huruf kecil semua, dan huruf kapital semua. Untuk judul dengan huruf kapital di setiap kata, gunakan menu Change Case di tab Beranda agar hasilnya lebih tepat.</p>
-
-<h3>Mengetik Lebih Cepat dengan AutoCorrect dan AutoText</h3>
-<p>Word memiliki fitur yang membantu mengetik lebih cepat dan lebih rapi. Fitur ini mendeteksi kesalahan penulisan dan ejaan, menyisipkan simbol secara cepat, serta melengkapi kalimat hanya dengan mengetik beberapa huruf. Ketiga kemampuan itu dikenal sebagai AutoCorrect dan AutoText. Misalnya, ketik <kbd>(c)</kbd> dan Word akan mengubahnya menjadi simbol hak cipta. Anda bisa menambahkan singkatan sendiri melalui File lalu Options, kemudian Proofing dan AutoCorrect Options.</p>
-<p>Untuk menyisipkan simbol yang tidak ada di keyboard, gunakan tab Sisipkan lalu Simbol. Simbol yang sering dipakai akan muncul di daftar terakhir, sehingga lebih cepat diambil lain kali.</p>
-
-<h3>Shortcut Word yang Lebih Lengkap</h3>
-<p>Jika Anda sering mencari <a href="https://www.kangruli.web.id/">shortcut Word lengkap</a>, kuncinya adalah mengelompokkannya berdasarkan fungsi. Pertama, perintah untuk dokumen dan file. Kedua, perintah untuk format teks. Ketiga, perintah untuk navigasi, seperti berpindah kata dengan <kbd>Ctrl</kbd> + panah kiri atau kanan, dan berpindah ke awal atau akhir dokumen dengan <kbd>Ctrl</kbd> + <kbd>Home</kbd> atau <kbd>Ctrl</kbd> + <kbd>End</kbd>. Dengan pengelompokan seperti ini, Anda lebih mudah mengingat dan mencari perintah yang dibutuhkan.</p>
-
-<h2>Mengenal Bagian-Bagian Layar Word</h2>
-<p>Sebelum menguasai menu, kenali dulu bagian layar Word. Hal ini penting agar Anda tidak kebingungan saat membaca panduan atau bertanya kepada orang lain.</p>
-<ul>
-  <li><strong>Title bar:</strong> bagian paling atas jendela yang menampilkan nama file dan tombol minimize, maximize, serta close. Inilah yang dimaksud dengan elemen paling atas pada Word.</li>
-  <li><strong>Quick Access Toolbar:</strong> deretan ikon kecil di pojok kiri atas untuk perintah yang sering dipakai, seperti simpan dan batalkan. Anda bisa menambahkan perintah sendiri lewat panah kecil di sebelahnya.</li>
-  <li><strong>Ribbon:</strong> area berisi tab seperti Beranda, Sisipkan, Tata Letak, dan Tampilan.</li>
-  <li><strong>Area dokumen:</strong> tempat Anda menulis dan menyusun halaman.</li>
-  <li><strong>Status bar:</strong> bagian bawah yang menampilkan jumlah halaman, jumlah kata, dan pengaturan zoom.</li>
-</ul>
-<p>Jika ribbon terasa memakan tempat, Anda bisa menyembunyikannya dengan menekan <kbd>Ctrl</kbd> + <kbd>F1</kbd>. Tekan kembali untuk menampilkannya lagi.</p>
-
-<h2>Shortcut di Browser dan Windows yang Berkaitan dengan Dokumen</h2>
-<p>Pekerjaan dokumen sering berhubungan dengan internet, mulai dari riset hingga mengunduh materi. Beberapa shortcut di peramban dan Windows membantu alur kerja tersebut.</p>
-
-<h3>Mode Penyamaran</h3>
-<p>Mode penyamaran, atau Incognito di Chrome dan InPrivate di Edge, membuat peramban tidak menyimpan riwayat penelusuran, cookie, dan data formulir setelah jendela ditutup. Untuk membukanya, gunakan <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>N</kbd>. Fitur ini berguna saat Anda memakai komputer bersama atau mencari referensi di perangkat pinjaman. Perlu diingat, mode ini tidak membuat aktivitas Anda tidak terlihat oleh penyedia internet atau administrator jaringan.</p>
-<p>Pertanyaan seperti <a href="https://www.kangruli.web.id/">shortcut fitur incognito adalah</a> dijawab dengan kombinasi tersebut. Pada peramban yang berbeda, nama fitur bisa berbeda, tetapi kombinasinya umumnya sama.</p>
-
-<h3>Menyimpan Halaman Web agar Bisa Dibaca Offline</h3>
-<p>Jika Anda ingin membaca artikel saat tidak ada koneksi, simpan halamannya terlebih dahulu. <a href="https://www.kangruli.web.id/">Menyimpan artikel pada sebuah website menjadi offline dapat menggunakan shortcut</a> <kbd>Ctrl</kbd> + <kbd>S</kbd> di peramban. Pilih lokasi penyimpanan, lalu pilih format halaman web lengkap agar gambar ikut tersimpan.</p>
-
-<h3>Membuka File yang Sudah Diunduh</h3>
-<p>Jika Anda baru saja mengunduh materi, buka daftar unduhan dengan <kbd>Ctrl</kbd> + <kbd>J</kbd> di Chrome atau Edge. Dari sana Anda bisa langsung membuka file yang sudah diunduh. Ini termasuk jawaban untuk <a href="https://www.kangruli.web.id/">shortcut yang digunakan untuk membuka file yang telah diunduh pada web browser</a>.</p>
-
-<h3>Peramban Bawaan Windows</h3>
-<p>Pertanyaan <a href="https://www.kangruli.web.id/">web browser yang disediakan oleh sistem operasi Windows</a> sering muncul di kelas komputer. Jawaban yang tepat untuk Windows modern adalah Microsoft Edge, yang sudah terpasang sejak awal. Meski begitu, pengguna tetap bebas memasang peramban lain seperti Chrome atau Firefox.</p>
-
-<h3>Menyematkan Aplikasi ke Taskbar</h3>
-<p>Fitur <a href="https://www.kangruli.web.id/">pin to taskbar</a> digunakan untuk menampilkan pintasan aplikasi pada taskbar, yaitu bilah di bagian bawah layar. Klik kanan ikon aplikasi, lalu pilih Pin to taskbar. Dengan begitu, Microsoft Word bisa dibuka hanya dengan satu klik kapan saja.</p>
-
-<h3>Membuka Program Office dengan Cepat</h3>
-<p>Untuk <a href="https://www.kangruli.web.id/">membuka program Microsoft Office dengan menu shortcut secara cepat</a>, gunakan alat bantu pencarian Windows atau kotak Run. Tekan <kbd>Windows</kbd> + <kbd>R</kbd>, ketik nama program seperti <em>winword</em>, lalu Enter. Cara lain adalah menekan tombol Windows, mengetik "Word", lalu memilih hasilnya dengan tombol panah dan Enter.</p>
-
-<h2>Mengenal CMS dan Perbedaannya dengan Pengolah Kata</h2>
-<p>Dalam dunia internet, sering muncul istilah CMS atau Content Management System. CMS adalah perangkat lunak untuk membuat dan mengelola konten situs web tanpa harus menulis kode dari nol. Contoh yang populer antara lain WordPress, Joomla, dan Drupal. Blogger juga termasuk dalam kategori ini.</p>
-<p>Pertanyaan <a href="https://www.kangruli.web.id/">berikut merupakan contoh CMS kecuali</a> bisa dijawab dengan mudah jika Anda memahami fungsinya. Microsoft Word bukan CMS, karena Word adalah pengolah kata untuk membuat dokumen cetak atau file digital, bukan untuk mengelola situs web secara langsung. Perbedaan ini penting agar Anda tahu alat mana yang tepat untuk setiap pekerjaan.</p>
-
-<h2>Latihan Soal dan Kunci Jawaban</h2>
-<p>Membaca saja belum cukup. Cobalah jawab soal-soal berikut terlebih dahulu sebelum membuka kunci jawaban. Anda bisa menguji pemahaman dengan mencoba langsung di Word.</p>
-
-<details>
-  <summary>1. Shortcut untuk meng-copy teks pada Microsoft Word adalah...</summary>
-  <p><strong>Jawaban:</strong> <kbd>Ctrl</kbd> + <kbd>C</kbd>.</p>
-</details>
-
-<details>
-  <summary>2. Shortcut untuk membatalkan perintah yang telah dilakukan sebelumnya adalah...</summary>
-  <p><strong>Jawaban:</strong> <kbd>Ctrl</kbd> + <kbd>Z</kbd>.</p>
-</details>
-
-<details>
-  <summary>3. Kombinasi tombol keyboard untuk membuat teks tebal adalah...</summary>
-  <p><strong>Jawaban:</strong> <kbd>Ctrl</kbd> + <kbd>B</kbd>.</p>
-</details>
-
-<details>
-  <summary>4. Untuk menambahkan gambar pada dokumen, menu yang digunakan adalah...</summary>
-  <p><strong>Jawaban:</strong> Insert (Sisipkan), lalu Pictures.</p>
-</details>
-
-<details>
-  <summary>5. Menu untuk mengatur jenis huruf pada dokumen adalah...</summary>
-  <p><strong>Jawaban:</strong> Tab Beranda (Home), pada grup Font.</p>
-</details>
-
-<details>
-  <summary>6. Shortcut untuk memotong teks adalah...</summary>
-  <p><strong>Jawaban:</strong> <kbd>Ctrl</kbd> + <kbd>X</kbd>.</p>
-</details>
-
-<details>
-  <summary>7. Shortcut untuk menyisipkan hyperlink adalah...</summary>
-  <p><strong>Jawaban:</strong> <kbd>Ctrl</kbd> + <kbd>K</kbd>.</p>
-</details>
-
-<details>
-  <summary>8. Membuat teks rata kiri dan kanan dapat dilakukan dengan memilih menu...</summary>
-  <p><strong>Jawaban:</strong> Justify (rata kiri kanan) pada grup Paragraf di tab Beranda, atau dengan <kbd>Ctrl</kbd> + <kbd>J</kbd>.</p>
-</details>
-
-<details>
-  <summary>9. Menu untuk mengatur margin pada dokumen adalah...</summary>
-  <p><strong>Jawaban:</strong> Tab Tata Letak (Layout), lalu Margins.</p>
-</details>
-
-<details>
-  <summary>10. Menu untuk mengatur spasi antara baris adalah...</summary>
-  <p><strong>Jawaban:</strong> Line and Paragraph Spacing pada grup Paragraf di tab Beranda.</p>
-</details>
-
-<details>
-  <summary>11. Shortcut untuk membuka dokumen baru adalah...</summary>
-  <p><strong>Jawaban:</strong> <kbd>Ctrl</kbd> + <kbd>N</kbd>.</p>
-</details>
-
-<details>
-  <summary>12. Shortcut untuk membuat tulisan miring adalah...</summary>
-  <p><strong>Jawaban:</strong> <kbd>Ctrl</kbd> + <kbd>I</kbd>.</p>
-</details>
-
-<details>
-  <summary>13. Bagian paling atas jendela Word yang menampilkan nama file disebut...</summary>
-  <p><strong>Jawaban:</strong> Title bar (bilah judul).</p>
-</details>
-
-<details>
-  <summary>14. Shortcut untuk mencetak dokumen adalah...</summary>
-  <p><strong>Jawaban:</strong> <kbd>Ctrl</kbd> + <kbd>P</kbd>.</p>
-</details>
-
-<details>
-  <summary>15. Shortcut untuk memilih semua teks adalah...</summary>
-  <p><strong>Jawaban:</strong> <kbd>Ctrl</kbd> + <kbd>A</kbd>.</p>
-</details>
-
-<details>
-  <summary>16. Fitur yang mendeteksi kesalahan ejaan dan menyisipkan simbol atau kalimat secara cepat disebut...</summary>
-  <p><strong>Jawaban:</strong> AutoCorrect dan AutoText.</p>
-</details>
-
-<details>
-  <summary>17. Berikut merupakan contoh CMS kecuali...</summary>
-  <p><strong>Jawaban:</strong> Microsoft Word, karena bukan sistem pengelola situs web.</p>
-</details>
-
-<h2>Tips Menghafal Shortcut Tanpa Stres</h2>
-<p>Menghafal puluhan kombinasi tombol sekaligus hampir pasti gagal. Cara yang lebih efektif adalah belajar sedikit demi sedikit, dengan pola yang mudah diulang.</p>
-
-<h3>Mulai dari Lima Shortcut Paling Sering</h3>
-<p>Pilih lima perintah yang paling sering Anda gunakan, misalnya copy, paste, undo, simpan, dan tebal. Pakai selama satu minggu tanpa melirik menu. Setelah terbiasa, tambahkan lima lagi.</p>
-
-<h3>Kelompokkan Berdasarkan Fungsi</h3>
-<p>Otak lebih mudah mengingat hal yang berhubungan. Kelompokkan shortcut menjadi tiga: untuk teks (tebal, miring, garis bawah), untuk paragraf (rata kiri, tengah, kanan), dan untuk dokumen (baru, buka, simpan, cetak).</p>
-
-<h3>Tempel Daftar di Dekat Layar</h3>
-<p>Cetak satu halaman daftar shortcut dan tempelkan di dekat monitor. Melihatnya berulang kali akan membuat kombinasi itu menempel dengan sendirinya.</p>
-
-<h3>Gunakan dalam Pekerjaan Nyata</h3>
-<p>Cara terbaik untuk mengingat adalah menggunakannya saat bekerja. Cobalah mengetik tugas Anda tanpa mouse selama satu sesi. Awalnya lambat, tetapi dalam beberapa hari Anda akan merasakan perbedaannya.</p>
-
-<h2>Kesalahan Umum Pemula</h2>
-<p>Ada beberapa kebiasaan yang sering memperlambat pekerjaan di Word. Pertama, memformat teks satu per satu padahal bisa dipilih sekaligus. Kedua, menekan Enter berkali-kali untuk membuat jarak, padahal jarak antarparagraf bisa diatur dari menu. Ketiga, mengetik spasi ganda untuk merapikan kalimat. Keempat, menyimpan dokumen hanya di akhir pekerjaan. Kelima, menempel teks dari internet tanpa membersihkan formatnya, sehingga dokumen berantakan.</p>
-<p>Menghindari kebiasaan ini saja sudah membuat dokumen lebih rapi dan pekerjaan lebih cepat selesai.</p>
-
-<h2>Pertanyaan yang Sering Diajukan</h2>
-
-<h3>Apakah shortcut Word bisa dipakai di Mac?</h3>
-<p>Sebagian besar kombinasi memakai tombol Command sebagai pengganti Ctrl. Beberapa perintah bisa berbeda, jadi periksa menu Help pada aplikasi Anda.</p>
-
-<h3>Mengapa shortcut saya tidak berfungsi?</h3>
-<p>Pastikan tidak ada kursor yang sedang aktif di kotak lain, seperti kolom judul atau kotak dialog. Jika masih gagal, periksa apakah keyboard Anda memakai tombol Fn yang perlu ditekan bersamaan untuk tombol angka tertentu.</p>
-
-<h3>Apakah menu di setiap versi Word sama?</h3>
-<p>Tidak selalu. Versi terbaru bisa memiliki nama tab atau ikon yang sedikit berbeda. Namun, shortcut dasar seperti Ctrl + C, Ctrl + V, dan Ctrl + Z hampir selalu sama di semua versi.</p>
-
-<h2>Kesimpulan</h2>
-<p>Menguasai shortcut dan menu Microsoft Word bukan soal menghafal semuanya sekaligus. Mulailah dari perintah dasar seperti copy, paste, undo, dan simpan, lalu tambahkan format teks, pengaturan halaman, dan fitur lanjutan secara bertahap. Dengan latihan kecil setiap hari, dokumen Anda akan lebih rapi, pekerjaan lebih cepat selesai, dan tangan tidak mudah lelah. Jelajahi juga panduan lain di <a href="https://www.kangruli.web.id/">kangruli.web.id</a> untuk memperluas kemampuan Anda di dunia digital.</p>
-
-</div>
+<section id="layanan">
+  <div class="container">
+    <span class="eyebrow">Layanan</span>
+    <h2>Apa yang Bisa Saya Bantu</h2>
+    <p class="lead">Setiap layanan dirancang untuk menyelesaikan masalah nyata, bukan sekadar menambah fitur.</p>
+
+    <div class="services-grid">
+      <article class="card">
+        <div class="icon">🔍</div>
+        <h3>Strategi SEO Konten</h3>
+        <p>Riset kata kunci, perencanaan artikel, dan optimasi halaman agar blog Anda tumbuh secara konsisten.</p>
+        <ul>
+          <li>Audit konten dan kata kunci</li>
+          <li>Rencana artikel berbasis topik</li>
+          <li>Optimasi judul, meta, dan tautan internal</li>
+        </ul>
+      </article>
+      <article class="card">
+        <div class="icon">🌐</div>
+        <h3>Pengembangan dan Perapian Website</h3>
+        <p>Tampilan blog Blogger atau situs sederhana yang cepat, responsif, dan nyaman dibaca di ponsel.</p>
+        <ul>
+          <li>Template Blogger yang bersih</li>
+          <li>Halaman landing dan widget</li>
+          <li>Pengaturan keamanan dasar</li>
+        </ul>
+      </article>
+      <article class="card">
+        <div class="icon">🎓</div>
+        <h3>Bahan Ajar Interaktif</h3>
+        <p>Modul pembelajaran digital yang bisa diakses dari peramban, cocok untuk siswa dan pengajar sekolah.</p>
+        <ul>
+          <li>Materi HTML interaktif</li>
+          <li>Kuis dan gamifikasi sederhana</li>
+          <li>Panduan penggunaan untuk guru</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="proses" class="process">
+  <div class="container">
+    <span class="eyebrow">Proses Kerja</span>
+    <h2>Dari Diskusi hingga Hasil</h2>
+    <p class="lead">Empat tahap sederhana yang membuat pekerjaan terukur dan tidak membingungkan.</p>
+
+    <div class="steps">
+      <div class="step">
+        <h3>Diskusi</h3>
+        <p>Kita bahas tujuan, kondisi saat ini, dan hal yang ingin dicapai.</p>
+      </div>
+      <div class="step">
+        <h3>Rencana</h3>
+        <p>Saya kirim rencana kerja tertulis dengan tahap dan estimasi waktu.</p>
+      </div>
+      <div class="step">
+        <h3>Pengerjaan</h3>
+        <p>Pekerjaan dikerjakan bertahap, dengan peninjauan di setiap tahap.</p>
+      </div>
+      <div class="step">
+        <h3>Evaluasi</h3>
+        <p>Hasil dipantau dan diperbaiki berdasarkan data yang nyata.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portofolio">
+  <div class="container">
+    <span class="eyebrow">Portofolio</span>
+    <h2>Beberapa Proyek Pilihan</h2>
+    <p class="lead">Contoh pekerjaan yang sudah berjalan. Ganti dengan tangkapan layar proyek Anda sendiri.</p>
+
+    <div class="portfolio-grid">
+      <article class="project">
+        <div class="project-thumb p1">Blog Panduan</div>
+        <div class="project-body">
+          <h3>Blog Panduan Teknologi</h3>
+          <p>Penataan ulang template dan struktur artikel agar lebih mudah dibaca dan ditemukan.</p>
+          <span class="tag">SEO &amp; Website</span>
+        </div>
+      </article>
+      <article class="project">
+        <div class="project-thumb p2">Learn Studio</div>
+        <div class="project-body">
+          <h3>Platform Belajar Digital</h3>
+          <p>Halaman masuk dan materi pembelajaran berbasis web untuk kebutuhan kelas.</p>
+          <span class="tag">Edukasi</span>
+        </div>
+      </article>
+      <article class="project">
+        <div class="project-thumb p3">Alat Gratis</div>
+        <div class="project-body">
+          <h3>Alat Cek Kesiapan AdSense</h3>
+          <p>Alat interaktif gratis untuk memperkirakan kesiapan blog sebelum mengajukan iklan.</p>
+          <span class="tag">Tools</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="harga" class="process">
+  <div class="container">
+    <span class="eyebrow">Paket Layanan</span>
+    <h2>Pilih Paket yang Sesuai</h2>
+    <p class="lead">Harga final mengikuti cakupan pekerjaan. Angka di bawah hanya gambaran awal.</p>
+
+    <div class="pricing-grid">
+      <div class="price">
+        <h3>Audit Cepat</h3>
+        <div class="amount">Mulai dari Rp300.000</div>
+        <p class="note">Untuk blog yang ingin tahu apa yang perlu diperbaiki.</p>
+        <ul>
+          <li>Audit SEO satu situs</li>
+          <li>Daftar prioritas perbaikan</li>
+          <li>Ringkasan tertulis 1 sesi</li>
+        </ul>
+        <a href="#kontak" class="btn btn-dark">Pesan Audit</a>
+      </div>
+      <div class="price featured">
+        <span class="badge">Paling Populer</span>
+        <h3>Pendampingan Blog</h3>
+        <div class="amount">Mulai dari Rp1.500.000</div>
+        <p class="note">Untuk pemilik blog yang ingin hasil berkelanjutan.</p>
+        <ul>
+          <li>Rencana konten 3 bulan</li>
+          <li>Optimasi hingga 10 artikel</li>
+          <li>Perapian template dan menu</li>
+          <li>Sesi evaluasi bulanan</li>
+        </ul>
+        <a href="#kontak" class="btn btn-primary">Pilih Paket Ini</a>
+      </div>
+      <div class="price">
+        <h3>Proyek Khusus</h3>
+        <div class="amount">Sesuai Kebutuhan</div>
+        <p class="note">Website, modul pembelajaran, atau alat interaktif.</p>
+        <ul>
+          <li>Diskusi kebutuhan gratis</li>
+          <li>Penawaran tertulis</li>
+          <li>Garansi revisi sesuai lingkup</li>
+        </ul>
+        <a href="#kontak" class="btn btn-dark">Diskusikan Proyek</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <div style="text-align:center">
+      <span class="eyebrow">FAQ</span>
+      <h2>Pertanyaan yang Sering Diajukan</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Berapa lama proses pengerjaan?</summary>
+        <p>Audit cepat biasanya selesai dalam beberapa hari kerja. Pendampingan dan proyek khusus mengikuti rencana yang disepakati di awal.</p>
+      </details>
+      <details>
+        <summary>Apakah saya perlu bisa coding?</summary>
+        <p>Tidak perlu. Saya menjelaskan setiap langkah dengan bahasa sederhana, dan Anda tetap bisa mengelola situs setelah selesai.</p>
+      </details>
+      <details>
+        <summary>Apakah ada jaminan hasil?</summary>
+        <p>Hasil SEO bergantung pada banyak faktor, termasuk kualitas konten dan waktu. Yang saya jamin adalah pekerjaan yang rapi, transparan, dan sesuai rencana.</p>
+      </details>
+      <details>
+        <summary>Bagaimana cara pembayaran?</summary>
+        <p>Pembayaran dapat dilakukan dengan uang muka lalu pelunasan setelah pekerjaan disetujui. Detailnya disepakati saat penawaran.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="kontak">
+  <div class="container">
+    <div class="cta">
+      <h2>Siap Membuat Website Anda Lebih Terarah?</h2>
+      <p>Ceritakan kebutuhan Anda. Saya akan membalas dengan saran awal dan estimasi yang jelas, tanpa kewajiban.</p>
+      <div class="hero-actions" style="justify-content:center">
+        <a href="mailto:hubungi@kangruli.web.id" class="btn btn-primary">Kirim Email</a>
+        <a href="https://www.kangruli.web.id/" class="btn btn-outline">Kunjungi Blog</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container foot">
+    <span>© 2026 Kang Ruli. Semua hak dilindungi.</span>
+    <span>
+      <a href="https://www.kangruli.web.id/">Blog</a> ·
+      <a href="https://digital-learnstudio.kangruli.web.id/">Digital Learn Studio</a> ·
+      <a href="#kontak">Kontak</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
